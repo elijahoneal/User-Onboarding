@@ -4,6 +4,26 @@ import './App.css';
 import axios from 'axios'
 import FormSchema from './components/FormSchema'
 import * as Yup from 'yup'
+import styled from 'styled-components'
+
+
+
+const NewUser = styled.div`
+  width:50%;
+  margin: 1rem auto;
+  height: 10rem;
+
+  border: 0.2rem solid #8fc748;
+    h4 {
+      font-size: 1.5rem;
+      color: #8fc748;
+      padding-bottom:0;
+    }
+    &:hover {
+      box-shadow: 0.2rem 0.2rem #8fc748;
+    }
+`
+
 
 // Initial State
 const freshForm = {
@@ -90,10 +110,10 @@ useEffect(() => {
      {users.map( user => {
 
        return (
-         <div>
+         <NewUser>
            <h4>Name: {user.name}</h4>
            <p>Email: {user.email}</p>
-         </div>
+         </NewUser>
        )
      } )}
     </div>
