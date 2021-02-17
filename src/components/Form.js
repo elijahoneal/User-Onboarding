@@ -1,16 +1,31 @@
 import React from 'react'
 
-const Form = () => {
+const Form = (props) => {
+    const { values , submit , change , disabled , errors } = props
+
+    const onSubmit = e => {
+        e.preventDefault()
+        submit()
+    }
+
+    const onChange = e => {
+        const { name , value , type , checked } = e.target
+        const isChecked = type === "checkbox" ? checked : value
+        change(name , isChecked)
+    }
     return (
-        <form>
+        <form onSubmit={onSubmit}>
             {/* Name */}
             <label>
                 Name
                 <input 
-                    name = "username"
+                    name = "name"
                     type = "text"
-                    placeholder = "enter username"
+                    value = {values.name}
+                    onChange = {onChange}
+                    placeholder = "enter name"
                 />
+                <div>{errors.name}</div>
             </label>
             {/* Email */}
             <label>
@@ -18,8 +33,11 @@ const Form = () => {
                 <input 
                     name = "email"
                     type = "email"
+                    value = {values.email}
+                    onChange = {onChange}
                     placeholder = "enter email"
                 />
+                <div>{errors.email}</div>
             </label>
             {/* Password */}
             <label>
@@ -27,8 +45,11 @@ const Form = () => {
                 <input 
                     name = "password"
                     type = "password"
+                    value = {values.password}
+                    onChange = {onChange}
                     placeholder = "enter password"
                 />
+                <div>{errors.password}</div>
             </label>
             {/* Terms of Service Checkbox */}
             <label>
@@ -36,10 +57,12 @@ const Form = () => {
                 <input 
                     name = "terms"
                     type = "checkbox"
-                    
+                    checked = {values.terms}
+                    onChange = {onChange}
                 />
+                <div>{errors.terms}</div>
             </label>
-            <button>Submit</button>
+            <button disabled={disabled}>Submit</button>
         </form>
     )
 }
