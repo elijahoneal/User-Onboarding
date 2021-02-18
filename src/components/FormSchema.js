@@ -11,10 +11,10 @@ const FormSchema = Yup.object().shape({
         .required(),
     password: Yup
         .string()
-        .required(),
+        .required()
+        .min(5 , "Must be at least 5 characters"),
     terms: Yup
-    .boolean( true , "Must Agree to Terms of Service" )
-    .required()
+    .boolean(true , "Must Agree to Terms of Service")
 })
 
 export default FormSchema

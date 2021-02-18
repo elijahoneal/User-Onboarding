@@ -25,14 +25,15 @@ font-size:1.2rem;
     }
     .check{
         margin:auto;
+       
     }
     button{
-        width:100%;
+        width:50%;
         height:2rem;
         font-size:1.2rem;
-        background-color: #8fc748;
-        color:white;
-        border:none;
+        // background-color: ${( {disabled} ) => disabled===true ? '#000' : '#8fc748'};
+        // color:white;
+        // border:none;
     }
 `
 
@@ -61,6 +62,7 @@ const Form = (props) => {
                     value = {values.name}
                     onChange = {onChange}
                     placeholder = "enter name"
+                    data-cy='nameInput'
                 />
                 
             </label>
@@ -73,6 +75,7 @@ const Form = (props) => {
                     value = {values.email}
                     onChange = {onChange}
                     placeholder = "enter email"
+                    data-cy='emailInput'
                 />
                
             </label>
@@ -85,6 +88,7 @@ const Form = (props) => {
                     value = {values.password}
                     onChange = {onChange}
                     placeholder = "enter password"
+                    data-cy='passwordInput'
                 />
                 
             </label>
@@ -97,10 +101,12 @@ const Form = (props) => {
                     type = "checkbox"
                     checked = {values.terms}
                     onChange = {onChange}
+                    data-cy='termsCheckbox'
                 />
                 
             </label>
-            <button disabled={disabled}>Submit</button>
+            <button disabled={disabled} data-cy='button'>Submit</button>
+            {/* Errors */}
             <div>{errors.name}</div>
             <div>{errors.email}</div>
             <div>{errors.password}</div>

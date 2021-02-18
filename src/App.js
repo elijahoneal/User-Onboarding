@@ -37,6 +37,7 @@ const initialFormErrors = {
   name: "",
   email: "",
   password: "",
+  terms: false
 }
 
 function App() {
@@ -46,18 +47,6 @@ function App() {
   const [formValues , setFormValues] = useState(freshForm)
   const [formErrors , setFormErrors] = useState(initialFormErrors)
   const [ disabled , setDisabled] = useState(true)
-
-  // // GET Request
-  // useEffect( () => {
-  //   axios.get("https://reqres.in/api/users")
-  // .then( res => {
-  //   console.log(res.data.data)
-  //   setUsers(res.data.data)
-  // })
-  // .catch( err => {
-  //   console.log(err)
-  // })
-  // },[] )
 
    // POST Request
  const postNewUser = newUser => {
